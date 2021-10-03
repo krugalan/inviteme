@@ -2099,7 +2099,8 @@ li.sub-menu--item.nav-item-has-children i {
 }
 
 .l1-create-acc-btn i {
-  margin-left: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .l1-create-acc-btn .btn {

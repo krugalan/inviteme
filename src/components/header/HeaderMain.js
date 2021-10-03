@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { HeaderButtonMain } from './HeaderButtonMain';
+import { CTAButton } from '../shared/CTAButton';
 import { HeaderLogo } from './HeaderLogo';
 
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -83,72 +83,70 @@ export const HeaderMain = () => {
 
 
     return (
-        <>
-            <header className="site-header site-header--menu-right landing-1-menu site-header--absolute site-header--sticky">
-                <div className="container-fluid">
-                    <nav className="navbar site-navbar">
-                        <HeaderLogo />
 
-                        <div className="menu-block-wrapper">
+        <header className="site-header site-header--menu-right landing-1-menu site-header--absolute site-header--sticky">
+            <div className="container-fluid">
+                <nav className="navbar site-navbar">
+                    <HeaderLogo />
 
-                            <div className={"menu-overlay " + toggleState}></div>
-                            <nav className={"menu-block " + toggleState} id="append-menu-header">
+                    <div className="menu-block-wrapper">
 
-                                <div className={"mobile-menu-head " + subMenuState}>
-                                    <div onClick={() => showSubMenu()} className="go-back"> <ArrowBackIosNewIcon /></div>
-                                    <div className="current-menu-title"> {currentMenuTitle} </div>
-                                    <div onClick={toggleMenu} className="mobile-menu-close"> <CloseIcon /></div>
-                                </div>
+                        <div className={"menu-overlay " + toggleState}></div>
+                        <nav className={"menu-block " + toggleState} id="append-menu-header">
 
-                                <ul className="site-menu-main">
-                                    {
-                                        Menu.map((el, index) =>
-                                            <li key={index} onClick={() => showSubMenu(el)} className="nav-item nav-item-has-children has-megamenu">
-                                                <a className="nav-link-item drop-trigger">{el.title}<i className="fas fa-angle-down"></i></a>
+                            <div className={"mobile-menu-head " + subMenuState}>
+                                <div onClick={() => showSubMenu()} className="go-back"> <ArrowBackIosNewIcon /></div>
+                                <div className="current-menu-title"> {currentMenuTitle} </div>
+                                <div onClick={toggleMenu} className="mobile-menu-close"> <CloseIcon /></div>
+                            </div>
 
-                                                <div className={"sub-menu megamenu  megadropdown-center  d-lg-flex align-items-center " + subMenuState}
-                                                    style={{ animation: `${anima}` }}
-                                                    id="submenu-100">
-                                                    <div className="col-lg-4 d-none d-lg-block">
-                                                        <div className="mega-menu-image">
-                                                            <img className="w-100" src="image/landing-2/people-3.png" alt="image" />
-                                                        </div>
+                            <ul className="site-menu-main">
+                                {
+                                    Menu.map((el, index) =>
+                                        <li key={index} onClick={() => showSubMenu(el)} className="nav-item nav-item-has-children has-megamenu">
+                                            <a className="nav-link-item drop-trigger">{el.title}<i className="fas fa-angle-down"></i></a>
+
+                                            <div className={"sub-menu megamenu  megadropdown-center  d-lg-flex align-items-center " + subMenuState}
+                                                style={{ animation: `${anima}` }}
+                                                id="submenu-100">
+                                                <div className="col-lg-4 d-none d-lg-block">
+                                                    <div className="mega-menu-image">
+                                                        <img className="w-100" src="image/landing-2/people-3.png" alt="image" />
                                                     </div>
-
-                                                    <ul className="col-lg-8 col-12 row-lg list-unstyled py-lg-7">
-                                                        <li className="col-lg-3">
-                                                            <div className="single-dropdown-block">
-                                                                {
-                                                                    (isTabletOrMobileDevice)
-                                                                        ? <SubItems />
-                                                                        : el.subItems.map((sel, index) => <a key={index} href="index.html" className="mega-drop-menu-item sub-menu--item"> {sel.title} </a>)
-                                                                }
-                                                            </div>
-                                                        </li>
-                                                    </ul>
                                                 </div>
-                                            </li>
-                                        )
-                                    }
-                                </ul>
-                            </nav>
-                        </div>
 
-                        <HeaderButtonMain />
+                                                <ul className="col-lg-8 col-12 row-lg list-unstyled py-lg-7">
+                                                    <li className="col-lg-3">
+                                                        <div className="single-dropdown-block">
+                                                            {
+                                                                (isTabletOrMobileDevice)
+                                                                    ? <SubItems />
+                                                                    : el.subItems.map((sel, index) => <a key={index} href="index.html" className="mega-drop-menu-item sub-menu--item"> {sel.title} </a>)
+                                                            }
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <CTAButton title="Confirmar Invitación" />
 
 
-                        <div onClick={toggleMenu} className="mobile-menu-trigger">
-                            <span></span>
-                        </div>
+                    <div onClick={toggleMenu} className="mobile-menu-trigger">
+                        <span></span>
+                    </div>
 
 
-                    </nav>
-                </div>
-            </header>
+                </nav>
+            </div>
+        </header>
 
 
-
-        </>
 
     )
 }
