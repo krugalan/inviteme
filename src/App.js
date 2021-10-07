@@ -1,20 +1,16 @@
 import React from 'react'
-import { HeaderMain } from './components/header/HeaderMain'
-import { JumboAnimated } from './components/jumboAinmated/JumboAnimated'
-
-
+import { HashRouter as Router } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { RouterMain } from './RouterMain';
+import { store } from "./store/store";
 
 
 export const App = () => {
-
-
   return (
-    <div className="site-wrapper overflow-hidden ">
-
-      <HeaderMain />
-      <JumboAnimated />
-
-
-    </div>
+    <Provider store={store}>
+      <Router>
+        <RouterMain />
+      </Router>
+    </Provider>
   )
 }

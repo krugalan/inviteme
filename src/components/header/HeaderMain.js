@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { CTAButton } from '../shared/CTAButton';
 import { HeaderLogo } from './HeaderLogo';
 
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CloseIcon from '@mui/icons-material/Close';
+
 
 export const Menu = [
     {
@@ -39,7 +40,6 @@ export const Menu = [
 
 export const HeaderMain = () => {
     const isTabletOrMobileDevice = useMediaQuery({ query: '(max-device-width: 991px)' })
-
     const [toggleState, setToggleState] = useState("");
     const [subMenuState, setSubMenuState] = useState("");
     const [anima, setAnima] = useState("");
@@ -75,9 +75,8 @@ export const HeaderMain = () => {
                 setSubMenuState("");
             }, 200);
         }
-
-
     }
+
 
 
 
@@ -89,6 +88,7 @@ export const HeaderMain = () => {
                 <nav className="navbar site-navbar">
                     <HeaderLogo />
 
+                    {/* MENU */}
                     <div className="menu-block-wrapper">
 
                         <div className={"menu-overlay " + toggleState}></div>
@@ -99,6 +99,8 @@ export const HeaderMain = () => {
                                 <div className="current-menu-title"> {currentMenuTitle} </div>
                                 <div onClick={toggleMenu} className="mobile-menu-close"> <CloseIcon /></div>
                             </div>
+
+
 
                             <ul className="site-menu-main">
                                 {
@@ -131,8 +133,10 @@ export const HeaderMain = () => {
                                     )
                                 }
                             </ul>
+
                         </nav>
                     </div>
+                    {/* MENU */}
 
                     <CTAButton title="Confirmar Invitación" />
 
