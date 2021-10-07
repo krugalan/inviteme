@@ -41,14 +41,9 @@ export const FeaturesMain = () => {
         <div class="feature-area-l1">
             <div class="container">
 
-
                 <div class="row feature-l1-items justify-content-center centrar">
-                    {
-                        secciones.map((el, index) => <Seccion key={index} el={el} />)
-                    }
+                    {secciones.map((el, index) => <Seccion key={index} el={el} />)}
                 </div>
-
-
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -56,20 +51,19 @@ export const FeaturesMain = () => {
                     </div>
                 </div>
 
-
-                <div class="row customer-area-l1 justify-content-center align-items-center ">
-                    <div class="col-xl-5 col-lg-5 col-md-10">
+                <div class="row  justify-content-center align-items-center ">
+                    <div class="col-lg-4 ">
                         <div class="section__heading">
-                            <h2 data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000"> Av. Costanera Rafael Obligado 1221, CABA
+                            <h2> Av. Costanera Rafael Obligado 1221, CABA
                             </h2>
-                            <p data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+                            <p>
                                 Es muy fácil llegar al salón! A pasitos de costa salgero!
                             </p>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-7 col-md-10 offset-xl-1">
+                    <div class="col-lg-7 offset-lg-1">
                         <div class="row user-rating-box-area">
-                            <div class="col-sm-6 col-xs-8" data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000">
+                            <div class="col-sm-6 col-xs-8" >
                                 <div class="h-100 rate-box bg-primary">
                                     <h3>
                                         18:30hs
