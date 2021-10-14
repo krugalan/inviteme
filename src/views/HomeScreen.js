@@ -5,13 +5,14 @@ import { HeaderMain } from '../components/header/HeaderMain'
 import { JumboAnimated } from '../components/jumboAinmated/JumboAnimated'
 
 import { eventoDetalle, actMenues, actEstados } from '../actions/evento'
-import { getEstados, getEventoDetalle, getMenues } from '../config/call_api'
+import { getEstados, getEventoDetalle, getMenues, postListarInvitadosByCode } from '../config/call_api'
+import { actConfirmarInvitacion } from '../actions/confirmacion'
 
 
 export const HomeScreen = () => {
 
     const dispatch = useDispatch()
-
+    const state = useSelector(state => state)
 
     useEffect(() => {
         getEventoDetalle()
@@ -22,11 +23,13 @@ export const HomeScreen = () => {
 
         getEstados()
             .then(res => dispatch(actEstados(res)))
+
+      
     }, [])
 
 
     return (
-        <div className="site-wrapper overflow-hidden" >
+        <div className="site-wrapper overflow-hidden" >           
             <HeaderMain />
             <JumboAnimated />
             <FeaturesMain />
