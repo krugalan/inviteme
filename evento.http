@@ -1,0 +1,94 @@
+@server = https://invitar.trazzart.com
+#@server = http://localhost:9000
+@token = Bearer alanykari2022
+
+###
+# PING
+GET {{server}}/ping
+content-type: application/json
+
+
+# APP PUBLICA
+
+###
+# Get evento
+GET {{server}}/api/v1/evento/detalle
+Authorization: {{token}}
+content-type: application/json
+
+
+###
+# Get menues
+GET {{server}}/api/v1/evento/menues
+Authorization: {{token}}
+content-type: application/json
+
+
+###
+# Get estados
+GET {{server}}/api/v1/evento/estados
+Authorization: {{token}}
+content-type: application/json
+
+
+###
+# Validate Invitation code
+POST {{server}}/api/v1/evento/validate/code
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "code": "canciones"
+}
+
+
+
+
+
+
+# APP ADMIN
+
+
+
+###
+# CREATE invitado
+POST {{server}}/api/v1/evento/invitado
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "invitado": "Acompañante",
+    "codigo": "flores",
+    "menu": null
+}
+
+###
+# Update invitado
+PUT {{server}}/api/v1/evento/invitado
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "id": 79,
+   "estado": "0"
+}
+
+
+
+
+###
+# Delete invitado
+DELETE  {{server}}/api/v1/evento/invitado
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "id": 83
+}
+
+
+###
+# Get invitados
+GET {{server}}/api/v1/evento/invitados
+Authorization: {{token}}
+content-type: application/json

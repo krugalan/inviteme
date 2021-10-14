@@ -1,55 +1,42 @@
 import { fetchHelper } from "../helpers/fetchHelper";
-import { dataConfig } from "./data";
 
 const server = 'https://invitar.trazzart.com';
+const version = '/api/v1/evento/'
 
 
-
-// const getEvento = async () => {
-//     setEvento(await fetchHelper('GET', 'https://invitar.trazzart.com/api/v1/evento/detalle', {}))
-// }
-
+/**
+ * GET
+ * @returns Detalle datos principales del evento
+ */
 export const getEventoDetalle = async () => {
-    return await fetchHelper('GET', `${server}/api/v1/evento/detalle`, {});
-}
-
-
-export const getInvitados = async () => {
-    const endPoint = '/api/v1/evento/invitados';
-    let res = await fetchHelper(
-        'GET',
-        `${server}${endPoint}`
-    )
+    let res = await fetchHelper('GET', `${server}${version}detalle`, {});
     return res;
 }
 
+/**
+ * GET
+ * @returns Menues ofrecidos
+ */
 export const getMenues = async () => {
-    const endPoint = '/api/v1/evento/menues';
-    let res = await fetchHelper(
-        'GET',
-        `${server}${endPoint}`
-    )
+    let res = await fetchHelper('GET', `${server}${version}menues`, {});
     return res;
 }
 
+/**
+ * GET
+ * @returns Estados de la aplicacion y entidades
+ */
 export const getEstados = async () => {
-    const endPoint = '/api/v1/evento/estados';
-    let res = await fetchHelper(
-        'GET',
-        `${server}${endPoint}`
-    )
+    let res = await fetchHelper('GET', `${server}${version}estados`, {});
     return res;
 }
 
-
+/**
+ * 
+ * @param { {"code": "canciones"} } data 
+ * @returns OK: Array de invitados; NOK: Array vacio
+ */
 export const postListarInvitadosByCode = async (data) => {
-    const endPoint = '/api/v1/evento/validate/code';
-    let res = await fetchHelper(
-        'POST',
-        `${server}${endPoint}`,
-        data
-    )
+    let res = await fetchHelper('POST', `${server}${version}validate/code`, data);
     return res;
 }
-
-export const configData = dataConfig;

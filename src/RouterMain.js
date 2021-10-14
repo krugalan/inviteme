@@ -4,10 +4,10 @@ import {
     Route
 } from "react-router-dom";
 
+import ScrollToTop from './components/shared/ScrollToTop';
 
 // view
 import { HomeScreen } from './views/HomeScreen';
-import ScrollToTop from './components/shared/ScrollToTop';
 import { ConfirmationScreen } from './views/ConfirmationScreen';
 
 export const RouterMain = () => {
@@ -17,8 +17,7 @@ export const RouterMain = () => {
             <ScrollToTop />
             <Switch>
                 <Route component={HomeScreen} path="/" exact />     
-                <Route component={ConfirmationScreen} path="/confirmar-asistencia" exact />  
-                          
+                <Route component={ConfirmationScreen} path="/confirmar-asistencia" exact />                            
             </Switch>
         </div>
     )
