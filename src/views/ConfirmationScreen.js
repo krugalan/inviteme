@@ -1,7 +1,7 @@
 import { TextField } from '@material-ui/core'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { actConfirmarInvitacion } from '../actions/confirmacion'
+import { actConfirmarInvitacion, actLimpiarInvitados } from '../actions/confirmacion'
 import { postListarInvitadosByCode } from '../config/call_api'
 import { useForm } from '../hooks/useForm'
 
@@ -12,84 +12,98 @@ export const ConfirmationScreen = () => {
     const [formValues, handleInputChange] = useForm({});
     const { valorBuscado } = formValues;
 
+    const limpiarInvitados = (e) => {
+        e.preventDefault();
+        dispatch(actLimpiarInvitados())
+    }
 
-    const validarCodigo = (codigoIngresado) => {
-        codigoIngresado = codigoIngresado.toLowerCase().trim();
-        postListarInvitadosByCode({ code: codigoIngresado })
-            .then(res => dispatch(actConfirmarInvitacion(res)))
+    const validarCodigo = () => {
+        if (valorBuscado) {
+            let codigoIngresado = valorBuscado.toLowerCase().trim();
+            postListarInvitadosByCode({ code: codigoIngresado })
+                .then(res => dispatch(actConfirmarInvitacion(res)))
+        }
+
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        validarCodigo();
     }
 
 
     const FormVerificar = () => {
         return (
             <>
-
-                <div class="sign-in-log-btn">
-                    <button
-                        onClick={() => validarCodigo(valorBuscado)}
-                        class="btn">Verificar código</button>
+                <div className="heading text-center">
+                    <h2>Confirmar Asistencia</h2>
+                    <p>Ingresá tu código de invitación</p>
+                    <TextField
+                        style={{
+                            backgroundColor: '#ffffff87',
+                            borderRadius: 25,
+                            padding: '2% 20%',
+                        }}
+                        fullWidth
+                        autoFocus
+                        name='valorBuscado'
+                        value={valorBuscado}
+                        onChange={handleInputChange}
+                        placeholder="ESCRIBIR CÓDIGO DE INVITACIÓN..."
+                    />
                 </div>
+                <form onSubmit={handleSubmit} >
+                    <div className="sign-in-log-btn">
+                        <button
+                            onSubmit={handleSubmit}
+                            className="btn">Verificar código</button>
+                    </div>
 
-                <div class="create-new-acc-text text-center">
-                    <p>No recuerdo mi código <br /><a href="sign-in-1.html">¿Qué hacer?</a></p>
-                </div>
+                    <div className="create-new-acc-text text-center">
+                        <p>No recuerdo mi código <br /><a >¿Qué hacer?</a></p>
+                    </div>
+                </form>
             </>
 
         )
     }
 
     const ListaInvitados = () => (
-        <pre>
-            {
-                JSON.stringify(invitacion, null, 1)
-            }
-        </pre>
+        <form onSubmit={limpiarInvitados}>
+            <pre>
+                {
+                    JSON.stringify(invitacion, null, 1)
+                }
+            </pre>
+            <div className="sign-in-log-btn">
+                <button
+                    onSubmit={limpiarInvitados}
+                    className="btn">Reintentar Búsqueda</button>
+            </div>
+        </form>
     )
     console.log(valorBuscado)
 
     return (
-        <div class="sign-up-1">
-            <div class="container">
-                <div class="row justify-content-lg-end justify-content-center">
-                    <div class="col-xl-5 col-lg-6 col-md-8">
+        <div className="sign-up-1">
+            <div className="container">
+                <div className="row justify-content-lg-end justify-content-center">
+                    <div className="col-xl-5 col-lg-6 col-md-8">
 
 
-
-                        <div class="sign-up-1-box  justify-content-lg-end"
+                        <div className="sign-up-1-box  justify-content-lg-end"
                             style={{
                                 backgroundColor: '#c9c9c987',
                                 borderRadius: 25,
                                 padding: '3%',
                             }}>
-                            <div class="heading text-center">
-                                <h2>Confirmar Asistencia</h2>
-                                <p>Ingresá tu código de invitación</p>
-                                <TextField
-                                    style={{
-                                        backgroundColor: '#ffffff87',
-                                        borderRadius: 25,
-                                        padding: '2% 20%',
-                                    }}
-                                    fullWidth
-                                    autoFocus
-                                    name='valorBuscado'
-                                    value={valorBuscado}
-                                    onChange={handleInputChange}
-                                    placeholder="ESCRIBIR CÓDIGO DE INVITACIÓN..."
 
 
-                                />
-                            </div>
-
-
-                            <form>
-
-                                {
-                                    (invitacion === undefined)
-                                        ? <FormVerificar />
-                                        : <ListaInvitados />
-                                }
-                            </form>
+                            {
+                                (invitacion === undefined)
+                                    ? <FormVerificar />
+                                    : <ListaInvitados />
+                            }
 
 
                         </div>

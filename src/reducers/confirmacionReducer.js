@@ -9,6 +9,8 @@ const confirmacionReducer = (state = {}, action) => {
                 ...state,
                 invitacion: action.payload.invitacion
             }
+        case types.limpiarInvitados:
+            return {}
         default:
             return state;
     }

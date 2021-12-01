@@ -1,9 +1,17 @@
 import React from 'react'
-import { detalleEvento } from '../../config/data'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 export const JumboAnimated = () => {
+
+
+    const {
+        nombre
+    } = useSelector(state => state.evento.detalle)
+
+
+
 
 
     return (
@@ -15,7 +23,8 @@ export const JumboAnimated = () => {
                     <div className="col-lg-9 col-md-10 order-lg-1 order-1" data-aos="fade-right"
                         data-aos-delay="500" data-aos-duration="1000">
                         <div className="content">
-                            <h2> {detalleEvento.nombre} </h2>
+                            <h5>Bienvenidos al evento </h5>
+                            <h2> {nombre} </h2>
                             <p>Te acercamos toda la info para ser parte de un momento inolvidable</p>
                             <div className="l1-create-acc-btn centrar">
                                 <Link className='centrar m-2' to="/confirmar-asistencia">
@@ -31,7 +40,7 @@ export const JumboAnimated = () => {
                         data-aos="fade-left" data-aos-delay="700" data-aos-duration="1000">
                         <div className="hero-image-group-l1">
                             <div className="image-1">
-                                {/* <img className="w-100" src={imgWoman} alt="image" /> */}
+
                             </div>
                         </div>
                     </div>

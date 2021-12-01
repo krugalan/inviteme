@@ -10,5 +10,6 @@ export const types = {
     loadEstados: '[Estados] Load All Estados',
 
     // INVITADOS
-    invitadosCode: '[Invitados Verificados] Load All invitados verificados por codigo'
+    invitadosCode: '[Invitados Verificados] Load All invitados verificados por codigo',
+    limpiarInvitados: '[Invitados Verificados] Delete All invitados verificados por codigo',
 }
